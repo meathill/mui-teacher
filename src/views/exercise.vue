@@ -2,6 +2,7 @@
 ul.exercise
   li.exercise-item(
     v-for="(item, index) in questions",
+    ref="line",
     :key="item.id",
   )
     .number {{item.a}}
@@ -9,6 +10,7 @@ ul.exercise
     .number {{item.b}}
     .equal =
     .number-input
+      span(hidden) '几'
       input.form-control(
         ref="input",
         type="number",
@@ -17,7 +19,9 @@ ul.exercise
         max="40",
         placeholder="?",
         @keydown.enter="goNext(index)",
+        @keydown.tab.prevent="goNext(index)",
         @blur="doValidate(item)",
+        @click="doRead(index)",
         :tabindex="index + 1",
         :class="item.extraClass",
       )
@@ -39,6 +43,11 @@ export default {
     };
   },
   methods: {
+    doRead(index) {
+      const content = this.$refs.line[index].textContent;
+      const msg = new SpeechSynthesisUtterance(content.replace('-', '减'));
+      speechSynthesis.speak(msg);
+    },
     doValidate(item) {
       if (item.answer === null) {
         item.extraClass = null;
@@ -51,6 +60,7 @@ export default {
         return;
       }
       this.$refs.input[index + 1].focus();
+      this.doRead(index + 1);
     },
   },
   beforeMount() {
@@ -73,7 +83,10 @@ export default {
         const b1 = b % 10;
         if (a1 < b1) {
           a = (a / 10 >> 0) * 10 + b1;
-          b = (a / 10 >> 0) * 10 + a1;
+          b = (b / 10 >> 0) * 10 + a1;
+        }
+        if (a > MAX_NUMBER) {
+          a -= 10;
         }
 
         result = a - b;
