@@ -1,0 +1,30 @@
+.exercise,
+.exercise input
+  font-family 'JetBrains Mono', monospace
+  font-size 3rem
+  margin 0 auto
+
+.exercise-item
+  display flex
+  justify-content center
+  align-items center
+
+  + .exercise-item
+    margin-top 1rem
+
+  > div
+    margin-right .5em
+
+    &:last-child
+      margin-right 0
+
+  .number
+    width 1.25em
+    text-align right
+
+  .number-input
+    width 4em
+
+  .form-control
+    &:valid
+      border

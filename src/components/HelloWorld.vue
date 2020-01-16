@@ -32,7 +32,12 @@ export default {
   },
   methods: {
     doStart() {
-
+      this.$router.push({
+        name: 'exercise',
+        params: {
+          number: this.number,
+        },
+      });
     },
   }
 }
