@@ -23,7 +23,10 @@
 export default {
   name: 'HelloWorld',
   props: {
-    msg: String,
+    msg: {
+      type: String,
+      default: 'Hello world',
+    },
   },
   data() {
     return {
@@ -39,6 +42,6 @@ export default {
         },
       });
     },
-  }
-}
+  },
+};
 </script>

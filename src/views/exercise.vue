@@ -28,7 +28,7 @@ ul.exercise
 </template>
 
 <script>
-import {MAX_NUMBER} from "@/config";
+import {MAX_NUMBER} from '@/config';
 import uniqueId from 'lodash/uniqueId';
 
 export default {
@@ -107,5 +107,5 @@ export default {
     await this.$nextTick();
     this.$refs.input[0].focus();
   },
-}
+};
 </script>
