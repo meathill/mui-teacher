@@ -55,11 +55,17 @@ export default {
   },
   beforeMount() {
     for (let i = 0; i < this.number; i++) {
-      let a = Math.random() * MAX_NUMBER >> 0;
-      let b = Math.random() * MAX_NUMBER >> 0;
       const op = Math.random() > .5; // true => +, false => -
-      // 不能有退位减法
-      if (!op) {
+      let a = Math.random() * MAX_NUMBER >> 0;
+      let b;
+      let result;
+      if (op) {
+        // 两个数相加不能超过 20
+        b = Math.random() * (MAX_NUMBER - a) >> 0;
+        result = a + b;
+      } else {
+        // 不能有退位减法
+        b = Math.random() * MAX_NUMBER >> 0;
         if (a < b) {
           [b, a] = [a, b];
         }
@@ -69,8 +75,9 @@ export default {
           a = (a / 10 >> 0) * 10 + b1;
           b = (a / 10 >> 0) * 10 + a1;
         }
+
+        result = a - b;
       }
-      const result = a + (op ? 1 : -1) * b;
 
       this.questions.push({
         id: uniqueId('q'),
