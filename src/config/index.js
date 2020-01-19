@@ -1,1 +1,1 @@
-export const MAX_NUMBER = 21;
+export const MAX_NUMBER = 20;

@@ -66,16 +66,16 @@ export default {
   beforeMount() {
     for (let i = 0; i < this.number; i++) {
       const op = Math.random() > .5; // true => +, false => -
-      let a = Math.random() * MAX_NUMBER >> 0;
+      let a = (Math.random() * MAX_NUMBER >> 0) + 1;
       let b;
       let result;
       if (op) {
         // 两个数相加不能超过 20
-        b = Math.random() * (MAX_NUMBER - a) >> 0;
+        b = (Math.random() * (MAX_NUMBER - a) >> 0) + 1;
         result = a + b;
       } else {
         // 不能有退位减法
-        b = Math.random() * MAX_NUMBER >> 0;
+        b = (Math.random() * MAX_NUMBER >> 0) + 1;
         if (a < b) {
           [b, a] = [a, b];
         }
