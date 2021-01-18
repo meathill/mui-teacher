@@ -1,10 +1,16 @@
 <template lang="pug">
 .hello
-  h1 {{ msg }}
+  h1 Welcome to Teacher Mui
 
   form(
     @submit.prevent="doStart",
   )
+    .form-group
+      label(for="type") 练习类型
+      select#type.form-control(
+        v-model="type",
+      )
+        option(v-for="(label, key) in exerciseTypes", :value="key") {{label}}
     .form-group
       label(for="number") 题目数量
       input#number.form-control(
@@ -15,28 +21,22 @@
 
     .form-group
       button.btn.btn-primary.btn-block 开始
-
-
 </template>
 
 <script>
+import {exerciseTypes, defaultType} from '@/data';
 export default {
-  name: 'HelloWorld',
-  props: {
-    msg: {
-      type: String,
-      default: 'Hello world',
-    },
-  },
   data() {
     return {
-      number: 20,
+      type: defaultType,
+      exerciseTypes,
+      number: 48,
     };
   },
   methods: {
     doStart() {
       this.$router.push({
-        name: 'exercise',
+        name: this.type,
         params: {
           number: this.number,
         },

@@ -1,7 +1,8 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
-import Exercise from '@/views/exercise';
+import AddSub from '@/views/add-sub';
+import NineNine from '@/views/nine-nine';
 
 Vue.use(VueRouter);
 
@@ -20,9 +21,14 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
   },
   {
-    path: '/exercise/:number',
-    name: 'exercise',
-    component: Exercise,
+    path: '/add-sub/:number',
+    name: 'add-sub',
+    component: AddSub,
+  },
+  {
+    path: '/nine-nine/:number',
+    name: 'nine-nine',
+    component: NineNine,
   },
 ];
 

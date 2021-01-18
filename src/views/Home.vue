@@ -4,19 +4,17 @@
     alt="Mui's picture",
     src="../assets/mui.jpg",
   )
-  Hello-World(
-    msg="Welcome to Teacher Mui",
-  )
+  exercise-form
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue';
+import ExerciseForm from '@/components/exercise-form.vue';
 
 export default {
   name: 'Home',
   components: {
-    HelloWorld,
+    ExerciseForm,
   },
 };
 </script>

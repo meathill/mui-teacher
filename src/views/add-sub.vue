@@ -30,39 +30,10 @@ ul.exercise
 <script>
 import {MAX_NUMBER} from '@/config';
 import uniqueId from 'lodash/uniqueId';
+import exercise from "@/views/exercise";
 
 export default {
-  computed: {
-    number() {
-      return this.$route.params.number;
-    },
-  },
-  data() {
-    return {
-      questions: [],
-    };
-  },
-  methods: {
-    doRead(index) {
-      const content = this.$refs.line[index].textContent;
-      const msg = new SpeechSynthesisUtterance(content.replace('-', '减'));
-      speechSynthesis.speak(msg);
-    },
-    doValidate(item) {
-      if (item.answer === null) {
-        item.extraClass = null;
-        return;
-      }
-      item.extraClass = item.answer === item.result ? 'is-valid' : 'is-invalid';
-    },
-    goNext(index) {
-      if (index >= this.number - 1) {
-        return;
-      }
-      this.$refs.input[index + 1].focus();
-      this.doRead(index + 1);
-    },
-  },
+  mixins: [exercise],
   beforeMount() {
     for (let i = 0; i < this.number; i++) {
       const op = Math.random() > .5; // true => +, false => -
@@ -102,10 +73,6 @@ export default {
         extraClass: null,
       });
     }
-  },
-  async mounted() {
-    await this.$nextTick();
-    this.$refs.input[0].focus();
   },
 };
 </script>
