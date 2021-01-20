@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
 import AddSub from '@/views/add-sub';
 import NineNine from '@/views/nine-nine';
+import NineNineAddSub from '@/views/nine-nine-add-sub';
 
 Vue.use(VueRouter);
 
@@ -29,6 +30,11 @@ const routes = [
     path: '/nine-nine/:number',
     name: 'nine-nine',
     component: NineNine,
+  },
+  {
+    path: '/mix-1/:number',
+    name: 'nine-nine-add-sub',
+    component: NineNineAddSub,
   },
 ];
 
