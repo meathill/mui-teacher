@@ -26,9 +26,9 @@
 </template>
 
 <script>
-import uniqueId from "lodash/uniqueId";
-import exercise from "@/views/exercise";
-import {rand, swap} from "@/helper/calculation";
+import uniqueId from 'lodash/uniqueId';
+import exercise from '@/views/exercise';
+import {rand, swap} from '@/helper/calculation';
 
 export default {
   mixins: [exercise],
@@ -43,10 +43,15 @@ export default {
         b = rand(1, 9);
         result = a * b;
       } else {
-        a = rand(1, 10);
+        a = rand(1, 99);
         b = rand(1, 10);
         if (op === '+') {
           result = a + b;
+          if (result > 99) {
+            const offset = result - 99;
+            a -= offset;
+            result -= offset;
+          }
         } else {
           if (a < b) {
             [a, b] = swap(a, b);
@@ -65,5 +70,5 @@ export default {
       });
     }
   },
-}
+};
 </script>

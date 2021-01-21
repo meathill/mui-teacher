@@ -34,4 +34,4 @@ export default {
     await this.$nextTick();
     this.$refs.input[0].focus();
   },
-}
+};

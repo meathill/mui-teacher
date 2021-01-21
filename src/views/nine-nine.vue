@@ -27,8 +27,8 @@
 </template>
 
 <script>
-import uniqueId from "lodash/uniqueId";
-import exercise from "@/views/exercise";
+import uniqueId from 'lodash/uniqueId';
+import exercise from '@/views/exercise';
 
 export default {
   mixins: [exercise],
@@ -47,5 +47,5 @@ export default {
       });
     }
   },
-}
+};
 </script>

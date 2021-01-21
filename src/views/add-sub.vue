@@ -30,7 +30,7 @@ ul.exercise
 <script>
 import {MAX_NUMBER} from '@/config';
 import uniqueId from 'lodash/uniqueId';
-import exercise from "@/views/exercise";
+import exercise from '@/views/exercise';
 
 export default {
   mixins: [exercise],
