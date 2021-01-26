@@ -39,17 +39,21 @@ export default {
       let b;
       let result;
       if (op === '×') {
-        a = rand(1, 9);
-        b = rand(1, 9);
+        a = rand(2, 9);
+        b = rand(2, 9);
         result = a * b;
       } else {
-        a = rand(1, 99);
-        b = rand(1, 10);
+        a = rand(11, 99);
+        b = rand(11, 99);
         if (op === '+') {
           result = a + b;
           if (result > 99) {
             const offset = result - 99;
-            a -= offset;
+            if (a > b) {
+              a -= offset;
+            } else {
+              b -= offset;
+            }
             result -= offset;
           }
         } else {

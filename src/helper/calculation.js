@@ -4,5 +4,5 @@ export function swap(a, b) {
 
 export function rand(from, to) {
   const total = to - from + 1;
-  return 1 + Math.random() * total >> 0;
+  return from + Math.random() * total >> 0;
 }
