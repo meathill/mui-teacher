@@ -36,8 +36,8 @@ import {rand, swap} from '@/helper/calculation';
 function createQuestion() {
   const a = rand(1, 9);
   const b = rand(1, 9);
-  const c = rand(1, 9);
   const op = Math.random() > .5 ? '+' : '-';
+  const c = rand(1, op === '+' || a * b > 9 ? 9 : a * b);
   const result = a * b + op * c;
   return {
     id: uniqueId('q'),
@@ -74,7 +74,7 @@ export default {
         if (op === '+') {
           result = a + b;
           if (result > 99) {
-            const offset = result - 99 - rand(0, 9);
+            const offset = result - 99 + rand(0, 9);
             if (a > b) {
               a -= offset;
             } else {
