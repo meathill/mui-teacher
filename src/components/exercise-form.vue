@@ -30,7 +30,7 @@ export default {
     return {
       type: defaultType,
       exerciseTypes,
-      number: 48,
+      number: 51,
     };
   },
   methods: {
