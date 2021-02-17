@@ -19,7 +19,7 @@
         input.form-control(
           ref="input",
           type="text",
-          v-model.number="item.",
+          v-model.number="item.answer",
           @keydown.enter="goNext(index)",
           @keydown.tab.prevent="goNext(index)",
           @blur="doValidate(item)",
